@@ -7,6 +7,27 @@
     <title>Movie Flix</title>
 </head>
 <body>
-    
+    <h2>Movie FLIX with Netlify Functions</h2>
+    <div>
+        <ul id="movies"></ul>
+    </div>
+    <script>
+        (async  () => {
+            try {
+                let results = await fetch ('/.functions/getMovies/getMovies').then ( response => {
+                return response.json();
+            });
+            console.log (results)
+            results.forEach (result => {
+                const listItem = document.createElement ( 'li');
+                listItem.innerHTML = result.title;
+                document.getElementById('movies')
+                .appendChild(listItem);
+            });
+            }catch (error) {
+                console.log(error);
+            }
+            })();
+    </script>
 </body>
 </html>

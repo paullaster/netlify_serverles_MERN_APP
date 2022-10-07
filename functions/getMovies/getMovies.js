@@ -1,3 +1,4 @@
+const { builtinModules } = require('module');
 const {MongoClient} = require ('mongodb');
 require ('dotenv').config ();
 
@@ -24,3 +25,5 @@ const handler = async (event, context) => {
     };
   }
 };
+
+builtinModules.exports = {handler};
